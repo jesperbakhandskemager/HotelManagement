@@ -9,6 +9,10 @@ namespace HotelManagement
         {
             bool runLoop = true;
             int roomNumber = 0;
+            string sRooms = "";
+            int iRooms = 0;
+            int i = 0;
+
 
 
             /*
@@ -29,14 +33,14 @@ namespace HotelManagement
 
                 Console.ReadLine();
             }
-            */
+
 
             void BookRoom() // Book a Room
             {
                 Console.WriteLine("Book a Room");
             }
 
-            /*
+
             void LookupRoom()
             {
                 Console.Write("Enter Room Number: ");
@@ -46,16 +50,16 @@ namespace HotelManagement
                 Console.WriteLine(roomNumber);
                 Console.ReadLine();
             }
-            */
+
 
             void DeleteBooking() // Delete a Booking
             {
                 Console.WriteLine("Delete a Booking!");
             }
-
+            */
 
             bool boolss = true;
-            bool run = true;
+           // bool run = true;
             int choice = 0;
             char yn; //Char for Yes/No questions
 
@@ -65,7 +69,34 @@ namespace HotelManagement
                     Console.Write("file.csv does not exist, do you want to create it? (Y/N): ");
                     yn = char.Parse(Console.ReadLine());
                     if (yn == 'y' || yn == 'Y')
-                        File.Create("file.csv");
+                    {
+                        do
+                        {
+                            Console.Write("How many rooms do you want: ");
+                            sRooms = Console.ReadLine();
+                            try
+                            {
+                                iRooms = int.Parse(sRooms);
+                                runLoop = false;
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Invalid Input!");
+                                runLoop = true;
+                            }
+
+                        } while (runLoop == true);
+
+                        string[] emptyArray = new string[iRooms];
+                        
+                        for (i = 0; i < iRooms; i++)
+                        {
+                            emptyArray[i] = (i + 1) + ",,,,false";
+                        }
+
+                        File.WriteAllLines("file.csv", emptyArray);
+                        Console.WriteLine("file.csv created!");
+                    }
 
                     else
                         Console.WriteLine("Could not find 'file.csv'!\nClosing Program!");
@@ -84,7 +115,7 @@ namespace HotelManagement
 
                 //gennemgår alle linjerne i filen
 
-                int i = 0;
+                i = 0;
 
                 while (i < lines.Length)
 
@@ -114,13 +145,6 @@ namespace HotelManagement
 
                 }
 
-                //Følgende loop er til at teste om dataen er gemt korrekt.
-
-
-
-
-
-
                 Console.Clear();
 
 
@@ -138,14 +162,14 @@ namespace HotelManagement
                     try
                     {
                         choice = int.Parse(Console.ReadLine());
-                        run = false;
+                        runLoop = false;
                     }
                     catch
                     {
                         Console.WriteLine("Invalid Option");
-                        run = true;
+                        runLoop = true;
                     }
-                } while (run == true);
+                } while (runLoop == true);
 
                 switch (choice)
                 {
@@ -239,7 +263,12 @@ namespace HotelManagement
                                 roomNumber = int.Parse(Console.ReadLine());
                                 Console.Clear();
                                 runLoop = false;
+                                if (room[roomNumber -1].booked == true)
                                 Console.WriteLine("Room: " + room[roomNumber - 1].room + "\nName: " + room[roomNumber - 1].name + "\nPhone: " + room[roomNumber - 1].phonenumber + "\nEmail: " + room[roomNumber - 1].email + "\nBooked: " + room[roomNumber -1].booked);
+                                else
+                                {
+                                    Console.WriteLine("Room {0} - Available!", roomNumber);
+                                }
 
                             }
                             catch
