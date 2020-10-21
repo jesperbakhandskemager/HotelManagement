@@ -7,6 +7,9 @@ namespace HotelManagement
     {
         static void Main(string[] args)
         {
+            bool runLoop = true;
+            int roomNumber = 0;
+
 
             /*
         void Overview() // Show overview over avaible rooms
@@ -63,6 +66,7 @@ namespace HotelManagement
                     yn = char.Parse(Console.ReadLine());
                     if (yn == 'y' || yn == 'Y')
                         File.Create("file.csv");
+
                     else
                         Console.WriteLine("Could not find 'file.csv'!\nClosing Program!");
                         Environment.Exit(1); // Close Application
@@ -104,6 +108,8 @@ namespace HotelManagement
 
                     room[i].email = fields[3];
 
+                    room[i].booked = bool.Parse(fields[4]);
+
                     i += 1;
 
                 }
@@ -122,12 +128,13 @@ namespace HotelManagement
                 // Console.WriteLine("ooooo   ooooo               .             oooo  \n`888'   `888'             .o8             `888  \n 888     888   .ooooo.  .o888oo  .ooooo.   888  \n 888ooooo888  d88' `88b   888   d88' `88b  888  \n 888     888  888   888   888   888ooo888  888  \n 888     888  888   888   888 . 888    .o  888  \no888o   o888o `Y8bod8P'   \"888\" `Y8bod8P' o888o \n");
                 Console.WriteLine(" /$$   /$$             /$$               /$$\n| $$  | $$            | $$              | $$\n| $$  | $$  /$$$$$$  /$$$$$$    /$$$$$$ | $$\n| $$$$$$$$ /$$__  $$|_  $$_/   /$$__  $$| $$\n| $$__  $$| $$  \\ $$  | $$    | $$$$$$$$| $$\n| $$  | $$| $$  | $$  | $$ /$$| $$_____/| $$\n| $$  | $$|  $$$$$$/  |  $$$$/|  $$$$$$$| $$\n|__/  |__/ \\______/    \\___/   \\_______/|__/");
                 Console.WriteLine("\n1) Overview\t\t2) Book a Room");
-                Console.WriteLine("3) Lookup Room\t\t4) Something Else");
-                Console.WriteLine("5) Delete a Booking\t6) Exit");
-                Console.Write("\nHotel: ");
+                Console.WriteLine("3) Lookup Room\t\t4) Delete a Booking");
+                Console.WriteLine("5) Exit");
 
                 do
                 {
+                    Console.Write("\nHotel: ");
+
                     try
                     {
                         choice = int.Parse(Console.ReadLine());
@@ -152,7 +159,11 @@ namespace HotelManagement
                         while (i < room.Length)
 
                         {
-                            Console.WriteLine("\nRoom : " + room[i].room + "\nName : " + room[i].name + "\nPhone: " + room[i].phonenumber + "\nEmail: " + room[i].email);
+                            if (room[i].booked == true)
+                                Console.WriteLine("\nRoom : " + room[i].room + "\nName : " + room[i].name + "\nPhone: " + room[i].phonenumber + "\nEmail: " + room[i].email);
+                            else
+                                Console.WriteLine("\nRoom: " + room[i].room + " - Available");
+
 
                             i += 1;
 
@@ -161,20 +172,74 @@ namespace HotelManagement
                         Console.ReadLine();
                         break;
                     case 2:
-                        BookRoom();
+                        //BookRoom();
+                        roomNumber = 0;
+                        runLoop = true;
+                        do
+                        { 
+                        Console.Write("Which Room? (WARNING! This will replace the old values!): ");
+                        string sInput = Console.ReadLine();
+
+                            if (sInput != "c" || sInput != "C" || sInput != "q")
+                            {
+                                try
+                                {
+                                    roomNumber = int.Parse(sInput);
+                                    runLoop = false;
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("Invalid Input!");
+                                    runLoop = true;
+                                }
+                            }
+                            }while (runLoop == true) ;
+
+                        Console.Clear();
+                        string userRoom = "";
+                        string userName = "";
+                        string userPhone = "";
+                        string userEmail = "";
+                        bool userBooked;
+
+                        Console.WriteLine("Room " + roomNumber);
+                        Console.Write("Name: ");
+                        userName = Console.ReadLine();
+                        Console.Write("Phone: ");
+                        userPhone = Console.ReadLine();
+                        Console.Write("E-Mail: ");
+                        userEmail = Console.ReadLine();
+
+
+                        try
+                        {
+                            userBooked = true;
+                            lines[roomNumber - 1] = roomNumber + "," + userName + "," + userPhone + "," + userEmail + "," + userBooked;
+                            File.WriteAllLines("file.csv", lines);
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Room dosen't exist! Not saved!");
+                            userBooked = false;
+                        }
+                        Console.WriteLine("Room Booked!");
+                        Console.ReadLine();
+
+                        
                         break;
                     case 3:
                         // LookupRoom();
-                        bool runLoop = true;
-                        int roomNumber = 0;
+                        runLoop = true;
+                        roomNumber = 0;
                         do {
 
                             Console.Write("Enter Room Number: ");
                             try
                             {
                                 roomNumber = int.Parse(Console.ReadLine());
+                                Console.Clear();
                                 runLoop = false;
-                                Console.WriteLine("Room: " + room[roomNumber - 1].room + "\nName: " + room[roomNumber - 1].name + "\nPhone: " + room[roomNumber - 1].phonenumber + "\nEmail: " + room[roomNumber - 1].email);
+                                Console.WriteLine("Room: " + room[roomNumber - 1].room + "\nName: " + room[roomNumber - 1].name + "\nPhone: " + room[roomNumber - 1].phonenumber + "\nEmail: " + room[roomNumber - 1].email + "\nBooked: " + room[roomNumber -1].booked);
 
                             }
                             catch
@@ -191,11 +256,53 @@ namespace HotelManagement
                         Console.ReadLine();
                         break;
                     case 4:
+                        // DeleteBooking();
+                        roomNumber = 0;
+                        runLoop = true;
+                        do
+                        {
+                            Console.Write("Which Room? (WARNING! This will delete the booking!): ");
+                            string sInput = Console.ReadLine();
+
+                            if (sInput != "c" || sInput != "C" || sInput != "q")
+                            {
+                                try
+                                {
+                                    roomNumber = int.Parse(sInput);
+                                    runLoop = false;
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("Invalid Input!");
+                                    runLoop = true;
+                                }
+                            }
+                        } while (runLoop == true);
+
+                        Console.Clear();
+                        userRoom = "";
+                        userName = "";
+                        userPhone = "";
+                        userEmail = "";
+                        userBooked = false;
+
+
+
+                        try
+                        {
+                            lines[roomNumber - 1] = roomNumber + "," + userName + "," + userPhone + "," + userEmail + "," + userBooked;
+                            File.WriteAllLines("file.csv", lines);
+                            Console.WriteLine("Room: " + roomNumber + " was reset!");
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Room dosen't exist! Not saved!");
+                            userBooked = false;
+                        }
+                        Console.ReadLine();
+
                         break;
                     case 5:
-                        DeleteBooking();
-                        break;
-                    case 6:
                         Console.WriteLine("Exit");
                         boolss = false;
                         break;
