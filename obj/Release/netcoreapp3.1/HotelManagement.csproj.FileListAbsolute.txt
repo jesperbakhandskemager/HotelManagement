@@ -1,0 +1,12 @@
+/home/jesper/Projects/HotelManagement/bin/Release/netcoreapp3.1/HotelManagement
+/home/jesper/Projects/HotelManagement/bin/Release/netcoreapp3.1/HotelManagement.deps.json
+/home/jesper/Projects/HotelManagement/bin/Release/netcoreapp3.1/HotelManagement.runtimeconfig.json
+/home/jesper/Projects/HotelManagement/bin/Release/netcoreapp3.1/HotelManagement.runtimeconfig.dev.json
+/home/jesper/Projects/HotelManagement/bin/Release/netcoreapp3.1/HotelManagement.dll
+/home/jesper/Projects/HotelManagement/bin/Release/netcoreapp3.1/HotelManagement.pdb
+/home/jesper/Projects/HotelManagement/obj/Release/netcoreapp3.1/HotelManagement.AssemblyInfoInputs.cache
+/home/jesper/Projects/HotelManagement/obj/Release/netcoreapp3.1/HotelManagement.AssemblyInfo.cs
+/home/jesper/Projects/HotelManagement/obj/Release/netcoreapp3.1/HotelManagement.csproj.CoreCompileInputs.cache
+/home/jesper/Projects/HotelManagement/obj/Release/netcoreapp3.1/HotelManagement.dll
+/home/jesper/Projects/HotelManagement/obj/Release/netcoreapp3.1/HotelManagement.pdb
+/home/jesper/Projects/HotelManagement/obj/Release/netcoreapp3.1/HotelManagement.genruntimeconfig.cache
