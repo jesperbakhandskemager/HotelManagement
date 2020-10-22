@@ -123,6 +123,7 @@ namespace HotelManagement
                     {
                         Console.WriteLine("Invalid Option");
                         runLoop = true;
+
                     }
                 } while (runLoop == true);
 
@@ -150,8 +151,7 @@ namespace HotelManagement
 
                         Console.ReadLine();
                         break;
-                    case 2:
-                        //BookRoom();
+                    case 2: //BookRoom
                         roomNumber = 0;
                         runLoop = true;
 
@@ -165,11 +165,13 @@ namespace HotelManagement
                                     Console.Write(room[i].room + ", ");
 
                             }
+                            Console.Write("or 'c' to cancel");
                             Console.Write("\nRoom: ");
                         string sInput = Console.ReadLine();
 
-                            if (sInput != "c" || sInput != "C" || sInput != "q")
-                            {
+                            if (sInput == "c" || sInput == "C" || sInput == "q")
+                                goto case 1;
+
                                 try
                                 {
                                     roomNumber = int.Parse(sInput);
@@ -180,7 +182,7 @@ namespace HotelManagement
                                     Console.WriteLine("Invalid Input!");
                                     runLoop = true;
                                 }
-                            }
+                            
                             }while (runLoop == true) ;
 
                         Console.Clear();
@@ -264,17 +266,28 @@ namespace HotelManagement
                      //   Console.WriteLine(roomNumber);
                         Console.ReadLine();
                         break;
-                    case 4:
-                        // DeleteBooking();
+                    case 4: // DeleteBooking
+
                         roomNumber = 0;
                         runLoop = true;
                         do
                         {
-                            Console.Write("Which Room? (WARNING! This will delete the booking!): ");
+                            Console.WriteLine("Which Room? (WARNING! This will delete the booking!)");
+                            Console.Write("Booked Rooms: ");
+                            for (i = 0; i < room.Length; i++)
+                            {
+                                if (room[i].booked == true)
+                                    Console.Write(room[i].room + ", ");
+
+                            }
+                            Console.Write("or 'c' to cancel");
+
+                            Console.Write("\nRoom: ");
                             string sInput = Console.ReadLine();
 
-                            if (sInput != "c" || sInput != "C" || sInput != "q")
-                            {
+                            if (sInput == "c" || sInput == "C" || sInput == "q")
+                                goto case 1;
+
                                 try
                                 {
                                     roomNumber = int.Parse(sInput);
@@ -285,7 +298,7 @@ namespace HotelManagement
                                     Console.WriteLine("Invalid Input!");
                                     runLoop = true;
                                 }
-                            }
+                            
                         } while (runLoop == true);
 
                         Console.Clear();
