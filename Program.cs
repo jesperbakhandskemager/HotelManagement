@@ -7,61 +7,15 @@ namespace HotelManagement
     {
         static void Main(string[] args)
         {
-            bool runLoop = true;
+            bool runLoop = true; // Used in multiple loops througout the program
             int roomNumber = 0;
-            string sRooms = "";
-            int iRooms = 0;
-            int i = 0;
-
-
-
-            /*
-        void Overview() // Show overview over avaible rooms
-            {
-                Console.WriteLine("Overview");
-                i = 0;
-
-                while (i < room.Length)
-
-                {
-
-                    Console.WriteLine(room[i].name);
-
-                    i += 1;
-
-                }
-
-                Console.ReadLine();
-            }
-
-
-            void BookRoom() // Book a Room
-            {
-                Console.WriteLine("Book a Room");
-            }
-
-
-            void LookupRoom()
-            {
-                Console.Write("Enter Room Number: ");
-                // TODO Make bug proof Try Catch
-                int roomNumber = int.Parse(Console.ReadLine());
-
-                Console.WriteLine(roomNumber);
-                Console.ReadLine();
-            }
-
-
-            void DeleteBooking() // Delete a Booking
-            {
-                Console.WriteLine("Delete a Booking!");
-            }
-            */
-
-            bool boolss = true;
-           // bool run = true;
-            int choice = 0;
+            string sRooms = ""; // Same as below but used for the ReadLine
+            int iRooms = 0; // Used as an interger for a selected room
+            int i = 0; // It's the Index Variable
+            bool boolss = true; // The do while loop around the whole program
+            int choice = 0; // Used for the main menu
             char yn; //Char for Yes/No questions
+
 
             do {
                 if (File.Exists("file.csv") != true) // Make sure File.txt exists, if it dosen't it will ask the user if it should be created
@@ -199,9 +153,18 @@ namespace HotelManagement
                         //BookRoom();
                         roomNumber = 0;
                         runLoop = true;
+
                         do
                         { 
-                        Console.Write("Which Room? (WARNING! This will replace the old values!): ");
+                        Console.WriteLine("Which Room? (WARNING! This will replace the old values!)");
+                            Console.Write("Available Rooms: ");
+                            for (i = 0; i < room.Length; i++)
+                            {
+                                if (room[i].booked == false)
+                                    Console.Write(room[i].room + ", ");
+
+                            }
+                            Console.Write("\nRoom: ");
                         string sInput = Console.ReadLine();
 
                             if (sInput != "c" || sInput != "C" || sInput != "q")
@@ -220,7 +183,6 @@ namespace HotelManagement
                             }while (runLoop == true) ;
 
                         Console.Clear();
-                        string userRoom = "";
                         string userName = "";
                         string userPhone = "";
                         string userEmail = "";
@@ -309,7 +271,6 @@ namespace HotelManagement
                         } while (runLoop == true);
 
                         Console.Clear();
-                        userRoom = "";
                         userName = "";
                         userPhone = "";
                         userEmail = "";
