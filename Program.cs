@@ -105,7 +105,9 @@ namespace HotelManagement
 
                 // MENU
                 // Console.WriteLine("ooooo   ooooo               .             oooo  \n`888'   `888'             .o8             `888  \n 888     888   .ooooo.  .o888oo  .ooooo.   888  \n 888ooooo888  d88' `88b   888   d88' `88b  888  \n 888     888  888   888   888   888ooo888  888  \n 888     888  888   888   888 . 888    .o  888  \no888o   o888o `Y8bod8P'   \"888\" `Y8bod8P' o888o \n");
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(" /$$   /$$             /$$               /$$\n| $$  | $$            | $$              | $$\n| $$  | $$  /$$$$$$  /$$$$$$    /$$$$$$ | $$\n| $$$$$$$$ /$$__  $$|_  $$_/   /$$__  $$| $$\n| $$__  $$| $$  \\ $$  | $$    | $$$$$$$$| $$\n| $$  | $$| $$  | $$  | $$ /$$| $$_____/| $$\n| $$  | $$|  $$$$$$/  |  $$$$/|  $$$$$$$| $$\n|__/  |__/ \\______/    \\___/   \\_______/|__/");
+                Console.ResetColor();
                 Console.WriteLine("\n1) Overview\t\t2) Book a Room");
                 Console.WriteLine("3) Lookup Room\t\t4) Delete a Booking");
                 Console.WriteLine("5) Exit");
@@ -140,9 +142,19 @@ namespace HotelManagement
 
                         {
                             if (room[i].booked == true)
-                                Console.WriteLine("\nRoom : " + room[i].room + "\nName : " + room[i].name + "\nPhone: " + room[i].phonenumber + "\nEmail: " + room[i].email);
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("\nRoom: " + room[i].room + " - Occupied");
+                                Console.ResetColor();
+                            }
+
+                            // If i want all information Console.WriteLine("\nRoom : " + room[i].room + "\nName : " + room[i].name + "\nPhone: " + room[i].phonenumber + "\nEmail: " + room[i].email);
                             else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("\nRoom: " + room[i].room + " - Available");
+                                Console.ResetColor();
+                            }
 
 
                             i += 1;
@@ -179,8 +191,11 @@ namespace HotelManagement
                                 }
                                 catch
                                 {
-                                    Console.WriteLine("Invalid Input!");
-                                    runLoop = true;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Invalid Input!");
+                                Console.ResetColor();
+
+                                runLoop = true;
                                 }
                             
                             }while (runLoop == true) ;
@@ -255,7 +270,10 @@ namespace HotelManagement
                             }
                             catch
                             {
+                                Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("Invalid Room! (You can only enter numbers!)\nTry Again!");
+                                Console.ResetColor();
+
                                 runLoop = true;
                             }
                             
@@ -295,8 +313,11 @@ namespace HotelManagement
                                 }
                                 catch
                                 {
+                                Console.ForegroundColor = ConsoleColor.Red;
                                     Console.WriteLine("Invalid Input!");
-                                    runLoop = true;
+                                Console.ResetColor();
+
+                                runLoop = true;
                                 }
                             
                         } while (runLoop == true);
