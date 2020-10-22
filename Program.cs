@@ -15,6 +15,7 @@ namespace HotelManagement
             bool boolss = true; // The do while loop around the whole program
             int choice = 0; // Used for the main menu
             char yn; //Char for Yes/No questions
+            bool bookSaved; // Boolean for whether the booking was saved
 
 
             do {
@@ -188,13 +189,26 @@ namespace HotelManagement
                         string userEmail = "";
                         bool userBooked;
 
-                        Console.WriteLine("Room " + roomNumber);
-                        Console.Write("Name: ");
-                        userName = Console.ReadLine();
-                        Console.Write("Phone: ");
-                        userPhone = Console.ReadLine();
-                        Console.Write("E-Mail: ");
-                        userEmail = Console.ReadLine();
+                        runLoop = false;
+                        do
+                        {
+                            Console.WriteLine("Room " + roomNumber);
+                            Console.Write("Name: ");
+                            userName = Console.ReadLine();
+                            Console.Write("Phone: ");
+                            userPhone = Console.ReadLine();
+                            Console.Write("E-Mail: ");
+                            userEmail = Console.ReadLine();
+
+                            if (userName.Contains(',') || userPhone.Contains(',') || userEmail.Contains(','))
+                            {
+                                runLoop = true;
+                                Console.WriteLine("You DISGUSTING CUNT OF A HUMAN BEING DON'T FUCKING USE COMMAS IN A NAME/EMAIL/ROOM NUMBER OR PHONE NUMBER!!!!!!\n");
+                            }
+                            else
+                                runLoop = false;
+
+                        } while (runLoop == true);
 
 
                         try
@@ -202,13 +216,17 @@ namespace HotelManagement
                             userBooked = true;
                             lines[roomNumber - 1] = roomNumber + "," + userName + "," + userPhone + "," + userEmail + "," + userBooked;
                             File.WriteAllLines("file.csv", lines);
+                            bookSaved = true;
                         }
                         catch
                         {
                             Console.WriteLine("Room dosen't exist! Not saved!");
                             userBooked = false;
+                            bookSaved = false;
                         }
+                        if (bookSaved == true)
                         Console.WriteLine("Room Booked!");
+
                         Console.ReadLine();
 
                         
