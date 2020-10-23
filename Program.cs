@@ -16,6 +16,8 @@ namespace HotelManagement
             int choice = 0; // Used for the main menu
             char yn; //Char for Yes/No questions
             bool bookSaved; // Boolean for whether the booking was saved
+            string phoneNumber = ""; // Used in the Lookup by Phone 
+            bool searchEmpty;
 
 
             do {
@@ -110,7 +112,7 @@ namespace HotelManagement
                 Console.ResetColor();
                 Console.WriteLine("\n1) Overview\t\t2) Book a Room");
                 Console.WriteLine("3) Lookup Room\t\t4) Delete a Booking");
-                Console.WriteLine("5) Exit");
+                Console.WriteLine("5) Search by Phone\t6) Exit");
 
                 do
                 {
@@ -163,6 +165,11 @@ namespace HotelManagement
 
                         Console.ReadLine();
                         break;
+
+
+
+
+
                     case 2: //BookRoom
                         roomNumber = 0;
                         runLoop = true;
@@ -177,7 +184,7 @@ namespace HotelManagement
                                     Console.Write(room[i].room + ", ");
 
                             }
-                            Console.Write("or 'c' to cancel");
+                            Console.Write("or 'c' to show overview and go back!");
                             Console.Write("\nRoom: ");
                         string sInput = Console.ReadLine();
 
@@ -248,13 +255,23 @@ namespace HotelManagement
 
                         
                         break;
-                    case 3:
-                        // LookupRoom();
+
+
+
+                    case 3: // LookupRoom
+                        Console.Clear();
                         runLoop = true;
                         roomNumber = 0;
                         do {
+                            Console.WriteLine("Lookup Room!");
+                            Console.Write("\n\nBooked Rooms: ");
+                            for (i = 0; i < room.Length; i++)
+                            {
+                                if (room[i].booked == true)
+                                    Console.Write(room[i].room + ", ");
 
-                            Console.Write("Enter Room Number: ");
+                            }
+                            Console.Write("\nEnter Room Number: ");
                             try
                             {
                                 roomNumber = int.Parse(Console.ReadLine());
@@ -284,6 +301,12 @@ namespace HotelManagement
                      //   Console.WriteLine(roomNumber);
                         Console.ReadLine();
                         break;
+
+
+
+
+
+
                     case 4: // DeleteBooking
 
                         roomNumber = 0;
@@ -298,13 +321,13 @@ namespace HotelManagement
                                     Console.Write(room[i].room + ", ");
 
                             }
-                            Console.Write("or 'c' to cancel");
+                            Console.Write("or 'c' to show overview and go back!");
 
                             Console.Write("\nRoom: ");
                             string sInput = Console.ReadLine();
 
                             if (sInput == "c" || sInput == "C" || sInput == "q")
-                                goto case 1;
+                                  goto case 1;
 
                                 try
                                 {
@@ -344,8 +367,49 @@ namespace HotelManagement
                         Console.ReadLine();
 
                         break;
-                    case 5:
-                        Console.WriteLine("Exit");
+
+
+
+
+
+                    case 5: // Search By Phone Number
+                        Console.Clear();
+                        runLoop = true;
+                        searchEmpty = true;
+                        phoneNumber = "";
+                        Console.WriteLine("Lookup By Phone!");
+
+                        Console.Write("\nEnter Phone Number: ");
+                        phoneNumber = Console.ReadLine();
+                        if (phoneNumber == "")
+                            break;
+                        for (i = 0; i < room.Length; i++)
+                        {
+                            if (room[i].phonenumber.Contains(phoneNumber))
+                            {
+                                searchEmpty = false;
+                                Console.WriteLine("\nRoom: " + room[i].room + "\nName: " + room[i].name + "\nPhone: " + room[i].phonenumber + "\nEmail: " + room[i].email + "\nBooked: " + room[i].booked);
+                            }
+
+                        }
+                            if(searchEmpty == true)
+                            Console.WriteLine("No Results!");
+                        
+
+
+
+                        //   Console.WriteLine(roomNumber);
+                        Console.ReadLine();
+
+                        break;
+
+
+
+
+
+
+
+                    case 6:
                         boolss = false;
                         break;
                     default:
