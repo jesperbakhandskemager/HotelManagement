@@ -1,21 +1,18 @@
 {
   "format": 1,
   "restore": {
-    "/home/jesper/Projects/HotelManagement/HotelManagement.csproj": {}
+    "/home/jesper/Documents/git/HotelManagement/HotelManagement.csproj": {}
   },
   "projects": {
-    "/home/jesper/Projects/HotelManagement/HotelManagement.csproj": {
+    "/home/jesper/Documents/git/HotelManagement/HotelManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/jesper/Projects/HotelManagement/HotelManagement.csproj",
+        "projectUniqueName": "/home/jesper/Documents/git/HotelManagement/HotelManagement.csproj",
         "projectName": "HotelManagement",
-        "projectPath": "/home/jesper/Projects/HotelManagement/HotelManagement.csproj",
+        "projectPath": "/home/jesper/Documents/git/HotelManagement/HotelManagement.csproj",
         "packagesPath": "/home/jesper/.nuget/packages/",
-        "outputPath": "/home/jesper/Projects/HotelManagement/obj/",
+        "outputPath": "/home/jesper/Documents/git/HotelManagement/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "/home/jesper/.nuget/NuGet/NuGet.Config"
         ],
@@ -53,7 +50,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.403/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/snap/dotnet-sdk/101/sdk/3.1.403/RuntimeIdentifierGraph.json"
         }
       }
     }

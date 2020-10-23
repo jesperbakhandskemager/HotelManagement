@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Vtqg0ASSumX0GHnPEe4ivmQMVHKs9WNqRHW78lweLu6Nj0fbYxEhufkQ2sBnJbcL67zZ+BoLx3EcMBxXjask+A==",
+  "dgSpecHash": "vvvOxIuGmXjrINw7/SZ7e1VqcgUztfWulkjb/mS/TZTwQyP7kILfQpWGs4U55OH4BhVcevOmEjHDB96OLtuDqg==",
   "success": true,
-  "projectFilePath": "/home/jesper/Projects/HotelManagement/HotelManagement.csproj",
+  "projectFilePath": "/home/jesper/Documents/git/HotelManagement/HotelManagement.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

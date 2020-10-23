@@ -11,3 +11,16 @@
 /home/jesper/Projects/HotelManagement/obj/Debug/netcoreapp3.1/HotelManagement.dll
 /home/jesper/Projects/HotelManagement/obj/Debug/netcoreapp3.1/HotelManagement.pdb
 /home/jesper/Projects/HotelManagement/obj/Debug/netcoreapp3.1/HotelManagement.genruntimeconfig.cache
+/home/jesper/Documents/git/HotelManagement/bin/Debug/netcoreapp3.1/HotelManagement
+/home/jesper/Documents/git/HotelManagement/bin/Debug/netcoreapp3.1/HotelManagement.deps.json
+/home/jesper/Documents/git/HotelManagement/bin/Debug/netcoreapp3.1/HotelManagement.runtimeconfig.json
+/home/jesper/Documents/git/HotelManagement/bin/Debug/netcoreapp3.1/HotelManagement.runtimeconfig.dev.json
+/home/jesper/Documents/git/HotelManagement/bin/Debug/netcoreapp3.1/HotelManagement.dll
+/home/jesper/Documents/git/HotelManagement/bin/Debug/netcoreapp3.1/HotelManagement.pdb
+/home/jesper/Documents/git/HotelManagement/obj/Debug/netcoreapp3.1/HotelManagement.csprojAssemblyReference.cache
+/home/jesper/Documents/git/HotelManagement/obj/Debug/netcoreapp3.1/HotelManagement.AssemblyInfoInputs.cache
+/home/jesper/Documents/git/HotelManagement/obj/Debug/netcoreapp3.1/HotelManagement.AssemblyInfo.cs
+/home/jesper/Documents/git/HotelManagement/obj/Debug/netcoreapp3.1/HotelManagement.csproj.CoreCompileInputs.cache
+/home/jesper/Documents/git/HotelManagement/obj/Debug/netcoreapp3.1/HotelManagement.dll
+/home/jesper/Documents/git/HotelManagement/obj/Debug/netcoreapp3.1/HotelManagement.pdb
+/home/jesper/Documents/git/HotelManagement/obj/Debug/netcoreapp3.1/HotelManagement.genruntimeconfig.cache
